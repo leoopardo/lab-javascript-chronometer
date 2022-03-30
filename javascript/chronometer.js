@@ -27,26 +27,35 @@ class Chronometer {
     return seconds
   }
 
-  computeTwoDigitNumber(value) {
-    value = this.currentTime.toString()
-    if(value.length < 2){
-      return 0 + value
-    } else {
-      return value
-    }
-    
+  computeTwoDigitNumber() {
+    let valueSec = this.getSeconds().toString();
+    let twoSec = "0";
+    if(valueSec.length < 2){
+      twoSec = 0 + valueSec
+      return twoSec
+    } else{
+      return valueSec
+    };
+
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0
   }
 
   split() {
-    // ... your code goes here
+    let valueMin = this.getMinutes().toString();
+    let twoMin = "0";
+    if(valueMin.length < 2){
+      twoMin = "0" + valueMin
+    } else {
+      twoMin = valueMin
+    }
+    return `${twoMin}:${this.computeTwoDigitNumber()}`
   }
 }
 

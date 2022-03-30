@@ -28,15 +28,8 @@ class Chronometer {
   }
 
   computeTwoDigitNumber() {
-    let valueSec = this.getSeconds().toString();
-    let twoSec = "0";
-    if(valueSec.length < 2){
-      twoSec = 0 + valueSec
-      return twoSec
-    } else{
-      return valueSec
-    };
-
+    let valueSec = this.currentTime.toString().padStart(2, '0');
+    return valueSec
   }
 
   stop() {
@@ -48,14 +41,8 @@ class Chronometer {
   }
 
   split() {
-    let valueMin = this.getMinutes().toString();
-    let twoMin = "0";
-    if(valueMin.length < 2){
-      twoMin = "0" + valueMin
-    } else {
-      twoMin = valueMin
-    }
-    return `${twoMin}:${this.computeTwoDigitNumber()}`
+    let valueMin = this.getMinutes().toString().padStart(2, '0');
+    return `${valueMin}:${valueSec}`
   }
 }
 
